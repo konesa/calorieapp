@@ -1,0 +1,18 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="utf-8">
+<title>Not found</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+	<h1>Something went wrong</h1>
+	<p>The page does not seem to be there. Or exist at all. Oh well.</p>
+	<form action="#" th:action="@{/index}"method="get"
+		class="form">
+		<input type="submit" class="btn btn-warning"
+			value="Go back to homepage">
+	</form>
+</body>

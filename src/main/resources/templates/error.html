@@ -1,0 +1,19 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="utf-8">
+<title>A byte seems to be out of place this time</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+	<h1>Something went wrong</h1>
+	<p>There seems to be a problem with the service at the moment.
+		Please try again later</p>
+	<form action="#" th:action="@{/index}" method="get"
+		class="form">
+		<input type="submit" class="btn btn-warning"
+			value="Go back to homepage">
+	</form>
+</body>

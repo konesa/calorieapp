@@ -1,0 +1,59 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="utf-8">
+<title>Register to calories counter</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+	<h1>Registration</h1>
+	<div class="form-group">
+		<form action="#" th:action="@{/register}" th:object="${user}"
+			method="POST" class="form">
+			<div class="form-group">
+				<label for="firstName">First name: </label> <input
+					class="form-control" type="text" th:field="*{firstName}"
+					id="firstName" placeholder="First Name">
+				<div class="alert alert-warning"
+					th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></div>
+			</div>
+			<div class="form-group">
+				<label for="lastName">Last name: </label> <input
+					class="form-control" type="text" th:field="*{lastName}"
+					id="lastName" placeholder="Last name">
+				<div class="alert alert-warning"
+					th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></div>
+			</div>
+			<div class="form-group">
+				<label for="email">Email: </label> <input class="form-control"
+					type="text" th:field="*{email}" id="email"
+					placeholder="name@email.com">
+				<div class="alert alert-warning"
+					th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+			</div>
+			<div class="form-group">
+				<label for="password">Password: </label> <input class="form-control"
+					type="password" th:field="*{password}" id="password"
+					placeholder="At least 6 characters">
+				<div class="alert alert-warning"
+					th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+			</div>
+			<div class="form-group">
+				<label for="confirmPassword">Confirm password: </label> <input
+					class="form-control" type="password" th:field="*{matchingPassword}"
+					id="confirmPassword" placeholder="Confirm password">
+				<div class="alert alert-warning"
+					th:if="${#fields.hasErrors('matchingPassword')}"
+					th:errors="*{matchingPassword}"></div>
+			</div>
+			<button type="submit" class="btn btn-success">Register</button>
+		</form>
+		<form action="#" th:action="@{/login}" method="get" class="form">
+			<input type="submit" class="btn btn-warning"
+				value="Go back to login">
+		</form>
+	</div>
+</body>
+</html>

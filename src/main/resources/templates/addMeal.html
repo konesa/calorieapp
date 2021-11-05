@@ -1,0 +1,46 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="utf-8">
+<title>Add a new meal</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+	<h1>Add food</h1>
+	<form action="#" th:action="@{/addMeal}" th:object="${meal}"
+		method="POST" enctype="utf8" class="form">
+		<div class="form-group">
+			<label for="name">Meal name: </label> <input class="form-control"
+				type="text" th:field="*{name}" id="name"
+				placeholder="Name of the food">
+		</div>
+		<p></p>
+		<div class="form-group">
+			<label for="calories">Calories: </label> <input class="form-control"
+				type=number min="0" step="1" th:field="*{calories}" id="calories"
+				placeholder="Number of calories">
+		</div>
+		<p></p>
+		<div class="form-group">
+			<label for="carbs">Carbs: </label> <input class="form-control"
+				type=number min="0" step="1" th:field="*{carbs}" id="carbs"
+				placeholder="Amount of carbs">
+		</div>
+		<p></p>
+		<div class="form-group">
+			<label for="sugar">Sugars: </label> <input class="form-control"
+				type=number min="0" step="1" th:field="*{sugar}" id="sugar"
+				placeholder="Amount of sugar">
+		</div>
+		<p></p>
+		<div class="form-group">
+			<label for="protein">Protein: </label> <input class="form-control"
+				type=number min="0" step="1" th:field="*{protein}" id="protein"
+				placeholder="Amount of protein">
+		</div>
+		<p></p>
+		<button type="submit">Submit</button>
+	</form>
+</body>
