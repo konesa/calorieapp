@@ -12,33 +12,33 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.calorieApp.domain.FunctionsInterface;
-import com.calorieApp.domain.Meal;
+import com.calorieApp.domain.User;
 
 @Controller
-public class AddMealController {
+public class EditCustomer {
 	@Autowired
 	FunctionsInterface functions;
 
-	@GetMapping(value = "/addMeal")
-	public String newMeal(Model model, Meal meal) {
+	@GetMapping(value = "/editInfo")
+	public String newMeal(Model model) {
 		if (functions.userAuthority() == "null") {
 			return "login";
 		} else {
-			model.addAttribute(meal);
-			return "addMeal";
+			model.addAttribute("user", functions.getUser());
+			return "editInfo";
 		}
 	}
 
-	@PostMapping(value = "/addMeal")
-	public String addMeal(@ModelAttribute @Valid Meal meal, BindingResult result, Errors errors,
-			Model model) {
+	@PostMapping(value = "/editInfo")
+	public String addMeal(@ModelAttribute @Valid User user, BindingResult result, Errors errors, Model model) {
+		functions.updateUser(user);
 		if (functions.userAuthority() == "null") {
 			return "login";
 		}
 		if (result.hasErrors()) {
-			return "addMeal";
+			return "editInfo";
 		} else {
-			functions.addMeal(meal);
+			functions.updateUser(user);
 			return "redirect:/index";
 		}
 	}

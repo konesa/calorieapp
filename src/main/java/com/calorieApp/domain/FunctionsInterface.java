@@ -1,13 +1,23 @@
 package com.calorieApp.domain;
 
+import java.util.List;
+
 public interface FunctionsInterface {
 	boolean registerUser(User user);
 
 	Object userAuthority();
 
 	boolean createAdmin(User user);
+
+	boolean deleteUser(long id);
+
+	boolean addMeal(Meal meal);
 	
-	boolean deleteUser(User user);
+	long getUserId();
 	
-	//boolean addMeal(Meal meal);
+	List<Meal> getMeals();
+
+	Object getUser();
+
+	void updateUser(User user);
 }

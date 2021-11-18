@@ -42,7 +42,7 @@ public class User {
 	@Transient
 	private String matchingPassword;
 
-	@Column(name = "role", nullable = false)
+	@Column(name = "role", nullable = false, updatable = false)
 	private String role;
 
 	public User() {

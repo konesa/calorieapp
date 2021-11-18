@@ -1,5 +1,6 @@
 package com.calorieApp.domain;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -13,9 +14,8 @@ public class UserFunctions implements FunctionsInterface {
 	UserRepository userRepo;
 	@Autowired
 	MealRepository mealRepo;
-
+	
 	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
 	public boolean registerUser(User user) {
 
@@ -33,6 +33,7 @@ public class UserFunctions implements FunctionsInterface {
 
 	/* Returns the role of the user as a string */
 	public String userAuthority() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
 			return "null";
 		} else if (userRepo.findByEmail(authentication.getName()).getRole() == "ADMIN") {
@@ -40,6 +41,13 @@ public class UserFunctions implements FunctionsInterface {
 		} else {
 			return "USER";
 		}
+	}
+
+	public long getUserId() {
+		String username = SecurityContextHolder.getContext().getAuthentication().getName();
+		User user = userRepo.findByEmail(username);
+		long id = user.getId();
+		return id;
 	}
 
 	public boolean createAdmin(User user) {
@@ -57,18 +65,38 @@ public class UserFunctions implements FunctionsInterface {
 	}
 
 	/* Deletes the user or returns false if the delete was unsuccessful */
-	public boolean deleteUser(User user) {
-		userRepo.deleteById(user.getId());
-		if (userRepo.findById(user.getId()) != null) {
+	public boolean deleteUser(long id) {
+		userRepo.deleteById(id);
+		if (userRepo.findById(id) != null) {
 			return false;
 		} else {
 			return true;
 		}
 	}
-	/*
-	 * public boolean addMeal(Meal meal) { if () } private boolean checkID (Meal
-	 * meal) {
-	 * 
-	 * } private boolean getID() { Object user = authentication.getName(); }
-	 */
+
+	/* Gets the meal object from the page and adds the current user ID to it */
+	public boolean addMeal(Meal meal) {
+		meal.setUserId(getUserId());
+		System.out.println(getUserId());
+		System.out.println(meal.toString());
+		if (mealRepo.save(meal) != null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public List<Meal> getMeals() {
+		long userId = getUserId();
+		return mealRepo.findByUserId(userId);
+	}
+	
+	public Object getUser() {
+		return userRepo.findById(getUserId());
+	}
+	
+	public void updateUser (User user) {
+		
+	}
 }

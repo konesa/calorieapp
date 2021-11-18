@@ -8,13 +8,19 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
-	<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+	<h1 th:inline="text">Hello!</h1>
 	<div>
 		<form style="float: left" th:action="@{/logout}" method="post">
 			<input type="submit" class="btn btn-danger" value="Logout" />
 		</form>
 		<form style="float: left" th:action="@{/addMeal}" method="get">
 			<input type="submit" class="btn btn-success" value="Enter a meal" />
+		</form>
+		<form style="float: left" th:action="@{/editInfo}" method="get">
+			<input type="submit" class="btn btn-secondary" value="Edit user info" />
+		</form>
+		<form style="float: left" th:action="@{/deleteUser}" method="GET">
+			<input type="submit" class="btn btn-secondary" value="Remove user" />
 		</form>
 	</div>
 	<div>
@@ -31,19 +37,17 @@
 			</thead>
 			<tbody>
 				<tr th:each="meal : ${meals}">
-					<td th:text="${meal.name}"></td>
+					<td th:text="${meal.date}"></td>
+					<td th:text="${meal.mealname}"></td>
 					<td th:text="${meal.calories}"></td>
 					<td th:text="${meal.carbs}"></td>
 					<td th:text="${meal.protein}"></td>
 					<td th:text="${meal.sugar}"></td>
-					<td><a class="btn btn-warnthing"
-						th:href="@{}">Edit</a></td>
-				</tr>
+				</tr>	
 			</tbody>
 		</table>
-		<div th:if="${meals == null}">
+		<div th:if="${meals.size() == 0}">
 			<h2>No meals to show yet, go add some!</h2>
 		</div>
-
 	</div>
 </body>

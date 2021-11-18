@@ -1,0 +1,60 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="utf-8">
+<title>Edit a meal</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+	<h1>Edit a meal</h1>
+	<div class="form-group">
+		<form action="#" th:action="@{/editMeal}" th:object="${meal}"
+			method="POST" class="form">
+			<div>
+				<input type="hidden" id="id" name="id" value="${meal.id}"
+					th:field="*{id}">
+			</div>
+			<div class="form-group">
+				<label for="name">Meal name: </label> <input type="text" id="name"
+					name="name" value="${meal.mealName}" th:field="*{name}"><br>
+				<div class="alert alert-warning"
+					th:if="${#fields.hasErrors('mealName')}" th:errors="*{mealName}"></div>
+			</div>
+			<div class="form-group">
+				<label for="calories">Calories: </label> <input type=number min="0"
+					step="1" id="calories" name="calories" value="${meal.calories}"
+					th:field="*{calories}"><br>
+				<div class="alert alert-warning"
+					th:if="${#fields.hasErrors('calories')}" th:errors="*{calories}"></div>
+			</div>
+			<div class="form-group">
+				<label for="carbs">Carbs: </label> <input type=number min="0"
+					step="1" id="carbs" name="carbs" value="${meal.carbs}"
+					th:field="*{carbs}"><br>
+				<div class="alert alert-warning"
+					th:if="${#fields.hasErrors('carbs')}" th:errors="*{carbs}"></div>
+			</div>
+			<div class="form-group">
+				<label for="sugar">Sugar: </label> <input type=number min="0"
+					step="1" id="sugar" name="sugar" value="${meal.sugar}"
+					th:field="*{sugar}"><br>
+				<div class="alert alert-warning"
+					th:if="${#fields.hasErrors('sugar')}" th:errors="*{sugar}"></div>
+			</div>
+			<div class="form-group">
+				<label for="protein">Protein: </label> <input type=number min="0"
+					step="1" id="protein" name="protein" value="${meal.protein}"
+					th:field="*{protein}"><br>
+				<div class="alert alert-warning"
+					th:if="${#fields.hasErrors('protein')}" th:errors="*{protein}"></div>
+			</div>
+			<button type="submit" class="btn btn-success">Update</button>
+		</form>
+		<form action="#" th:action="@{/index}" method="get" class="form">
+			<input type="submit" class="btn btn-warning" value="Return">
+		</form>
+	</div>
+</body>
+</html>
