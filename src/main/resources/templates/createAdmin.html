@@ -6,8 +6,9 @@
 <title>Create admin</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
-<body>
+<body class="margins">
 	<h1>Registration</h1>
 	<div class="form-group">
 		<form action="#" th:action="@{/createAdmin}" th:object="${user}"

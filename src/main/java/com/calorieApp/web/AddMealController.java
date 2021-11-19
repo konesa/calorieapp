@@ -21,25 +21,20 @@ public class AddMealController {
 
 	@GetMapping(value = "/addMeal")
 	public String newMeal(Model model, Meal meal) {
-		if (functions.userAuthority() == "null") {
-			return "login";
-		} else {
 			model.addAttribute(meal);
 			return "addMeal";
-		}
 	}
 
 	@PostMapping(value = "/addMeal")
-	public String addMeal(@ModelAttribute @Valid Meal meal, BindingResult result, Errors errors,
-			Model model) {
-		if (functions.userAuthority() == "null") {
-			return "login";
-		}
+	public String addMeal(@ModelAttribute @Valid Meal meal, BindingResult result, Errors errors, Model model) {
 		if (result.hasErrors()) {
 			return "addMeal";
 		} else {
-			functions.addMeal(meal);
-			return "redirect:/index";
+			if (functions.addMeal(meal)) {
+				return "redirect:/index";
+			} else {
+				return "error";
+			}
 		}
 	}
 }

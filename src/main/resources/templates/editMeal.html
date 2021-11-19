@@ -6,51 +6,52 @@
 <title>Edit a meal</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
-<body>
-	<h1>Edit a meal</h1>
-	<div class="form-group">
+<body class="margins">
+	<h1>Edit meal</h1>
+	<div class=center-form>
 		<form action="#" th:action="@{/editMeal}" th:object="${meal}"
-			method="POST" class="form">
-			<div>
+			method="POST" enctype="utf8" class="form">
+			<div class="form-group">
 				<input type="hidden" id="id" name="id" value="${meal.id}"
 					th:field="*{id}">
 			</div>
 			<div class="form-group">
-				<label for="name">Meal name: </label> <input type="text" id="name"
-					name="name" value="${meal.mealName}" th:field="*{name}"><br>
+				<label for="name">Meal name: </label> <input class="form-control" type="text" id="name"
+					name="name" value="${meal.mealname}" th:field="*{mealname}"><br>
 				<div class="alert alert-warning"
-					th:if="${#fields.hasErrors('mealName')}" th:errors="*{mealName}"></div>
+					th:if="${#fields.hasErrors('mealname')}" th:errors="*{mealname}"></div>
 			</div>
 			<div class="form-group">
-				<label for="calories">Calories: </label> <input type=number min="0"
+				<label for="calories">Calories: </label> <input class="form-control" type=number min="0"
 					step="1" id="calories" name="calories" value="${meal.calories}"
 					th:field="*{calories}"><br>
 				<div class="alert alert-warning"
 					th:if="${#fields.hasErrors('calories')}" th:errors="*{calories}"></div>
 			</div>
 			<div class="form-group">
-				<label for="carbs">Carbs: </label> <input type=number min="0"
+				<label for="carbs">Carbs: </label> <input class="form-control" type=number min="0"
 					step="1" id="carbs" name="carbs" value="${meal.carbs}"
 					th:field="*{carbs}"><br>
 				<div class="alert alert-warning"
 					th:if="${#fields.hasErrors('carbs')}" th:errors="*{carbs}"></div>
 			</div>
 			<div class="form-group">
-				<label for="sugar">Sugar: </label> <input type=number min="0"
+				<label for="sugar">Sugar: </label> <input class="form-control" type=number min="0"
 					step="1" id="sugar" name="sugar" value="${meal.sugar}"
 					th:field="*{sugar}"><br>
 				<div class="alert alert-warning"
 					th:if="${#fields.hasErrors('sugar')}" th:errors="*{sugar}"></div>
 			</div>
 			<div class="form-group">
-				<label for="protein">Protein: </label> <input type=number min="0"
+				<label for="protein">Protein: </label> <input class="form-control" type=number min="0"
 					step="1" id="protein" name="protein" value="${meal.protein}"
 					th:field="*{protein}"><br>
 				<div class="alert alert-warning"
 					th:if="${#fields.hasErrors('protein')}" th:errors="*{protein}"></div>
 			</div>
-			<button type="submit" class="btn btn-success">Update</button>
+			<input type="submit" class="btn btn-success" value="Update" />
 		</form>
 		<form action="#" th:action="@{/index}" method="get" class="form">
 			<input type="submit" class="btn btn-warning" value="Return">

@@ -14,7 +14,7 @@ public class UserFunctions implements FunctionsInterface {
 	UserRepository userRepo;
 	@Autowired
 	MealRepository mealRepo;
-	
+
 	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
 	public boolean registerUser(User user) {
@@ -42,12 +42,12 @@ public class UserFunctions implements FunctionsInterface {
 			return "USER";
 		}
 	}
-
+	
+	/*Gets the current authentication name and returns the ID of the user from the database*/
 	public long getUserId() {
 		String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		User user = userRepo.findByEmail(username);
-		long id = user.getId();
-		return id;
+		return user.getId();
 	}
 
 	public boolean createAdmin(User user) {
@@ -67,18 +67,16 @@ public class UserFunctions implements FunctionsInterface {
 	/* Deletes the user or returns false if the delete was unsuccessful */
 	public boolean deleteUser(long id) {
 		userRepo.deleteById(id);
-		if (userRepo.findById(id) != null) {
-			return false;
-		} else {
+		if ((userRepo.findById(id).orElse(null)) == null) {
 			return true;
+		} else {
+			return false;
 		}
 	}
 
 	/* Gets the meal object from the page and adds the current user ID to it */
 	public boolean addMeal(Meal meal) {
 		meal.setUserId(getUserId());
-		System.out.println(getUserId());
-		System.out.println(meal.toString());
 		if (mealRepo.save(meal) != null) {
 			return true;
 		} else {
@@ -87,16 +85,27 @@ public class UserFunctions implements FunctionsInterface {
 	}
 
 	@Override
+	/* Returns all the meals belonging to a specific id */
 	public List<Meal> getMeals() {
 		long userId = getUserId();
 		return mealRepo.findByUserId(userId);
 	}
-	
-	public Object getUser() {
-		return userRepo.findById(getUserId());
+
+	public Meal getMeal(long id) {
+		return mealRepo.findById(id).orElse(null);
 	}
-	
-	public void updateUser (User user) {
-		
+
+	public boolean deleteMeal(long id) {
+		mealRepo.deleteById(id);
+		if (mealRepo.findById(id).orElse(null) == null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public void deleteAllMeals(long userID) {
+		List<Meal> meals = getMeals();
+		mealRepo.deleteAll(meals);
 	}
 }

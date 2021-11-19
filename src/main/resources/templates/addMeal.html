@@ -6,8 +6,9 @@
 <title>Add a new meal</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
-<body>
+<body class="margins">
 	<h1>Add a meal</h1>
 	<div class=center-form>
 		<form action="#" th:action="@{/addMeal}" th:object="${meal}"
@@ -25,7 +26,8 @@
 					type=number min="0" step="1" th:field="*{calories}" id="calories"
 					placeholder="Number of calories">
 				<div class="alert alert-warning"
-					th:if="${#fields.hasErrors('calories')}">Please enter a valid number</div>
+					th:if="${#fields.hasErrors('calories')}">Please enter a valid
+					number</div>
 			</div>
 			<p></p>
 			<div class="form-group">
@@ -33,7 +35,8 @@
 					type=number min="0" step="1" th:field="*{carbs}" id="carbs"
 					placeholder="Amount of carbs">
 				<div class="alert alert-warning"
-					th:if="${#fields.hasErrors('carbs')}">Please enter a valid number</div>
+					th:if="${#fields.hasErrors('carbs')}">Please enter a valid
+					number</div>
 			</div>
 			<p></p>
 			<div class="form-group">
@@ -41,7 +44,8 @@
 					type=number min="0" step="1" th:field="*{sugar}" id="sugar"
 					placeholder="Amount of sugar">
 				<div class="alert alert-warning"
-					th:if="${#fields.hasErrors('sugar')}">Please enter a valid number</div>
+					th:if="${#fields.hasErrors('sugar')}">Please enter a valid
+					number</div>
 			</div>
 			<p></p>
 			<div class="form-group">
@@ -49,10 +53,15 @@
 					type=number min="0" step="1" th:field="*{protein}" id="protein"
 					placeholder="Amount of protein">
 				<div class="alert alert-warning"
-					th:if="${#fields.hasErrors('protein')}">Please enter a valid number</div>
+					th:if="${#fields.hasErrors('protein')}">Please enter a valid
+					number</div>
 			</div>
-			<p></p>
-			<button type="submit" class="btn btn-success">Submit</button>
+			<br>
+			<input type="submit" class="btn btn-success" value="Add meal!">
+		</form>
+		<form action="#" th:action="@{/index}" method="get" class="form">
+			<input type="submit" class="btn btn-warning"
+				value="Go back to homepage">
 		</form>
 	</div>
 </body>

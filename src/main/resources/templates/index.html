@@ -6,21 +6,20 @@
 <title>Login to calorie counter</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
-<body>
-	<h1 th:inline="text">Hello!</h1>
+<body class="margins">
+	<h1 th:inline="text" style="text-align:center">Welcome!</h1>
 	<div>
 		<form style="float: left" th:action="@{/logout}" method="post">
 			<input type="submit" class="btn btn-danger" value="Logout" />
 		</form>
-		<form style="float: left" th:action="@{/addMeal}" method="get">
+		<form style="float: left; margin-left: 10%" th:action="@{/addMeal}"
+			method="get">
 			<input type="submit" class="btn btn-success" value="Enter a meal" />
 		</form>
-		<form style="float: left" th:action="@{/editInfo}" method="get">
-			<input type="submit" class="btn btn-secondary" value="Edit user info" />
-		</form>
-		<form style="float: left" th:action="@{/deleteUser}" method="GET">
-			<input type="submit" class="btn btn-secondary" value="Remove user" />
+		<form action="#" th:action="@{/deleteUser}" method="get" class="form">
+			<input style ="float:right" type="submit" class="btn btn-secondary" value="Delete user">
 		</form>
 	</div>
 	<div>
@@ -30,9 +29,11 @@
 					<th>Date</th>
 					<th>Meal</th>
 					<th>Calories</th>
-					<th>Carbs</th>
-					<th>Protein</th>
-					<th>Sugar</th>
+					<th>Carbs / g</th>
+					<th>Protein / g</th>
+					<th>Sugar / g</th>
+					<th>Edit</th>
+					<th>Delete</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -43,7 +44,9 @@
 					<td th:text="${meal.carbs}"></td>
 					<td th:text="${meal.protein}"></td>
 					<td th:text="${meal.sugar}"></td>
-				</tr>	
+					<td><a class="btn btn-warning" th:href="@{/editMeal/{id}(id=${meal.id})}">Edit</a></td>
+					<td><a class="btn btn-danger" th:href="@{/deleteMeal/{id}(id=${meal.id})}">Delete</a></td>
+				</tr>
 			</tbody>
 		</table>
 		<div th:if="${meals.size() == 0}">

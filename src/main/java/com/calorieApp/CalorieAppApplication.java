@@ -25,10 +25,18 @@ public class CalorieAppApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner() {
 		return (args) -> {
-			User user = new User("user", "user", "user@user.com", "$2a$10$T.fEvFa9UpgdacosOAUvaubtI/hPcGlEV2kMzAJTSLa70Zg72GHhK", "$2a$10$T.fEvFa9UpgdacosOAUvaubtI/hPcGlEV2kMzAJTSLa70Zg72GHhK", "USER");
-			User user2 = new User("admin", "admin", "admin@admin.com", "$2a$10$sOonsPAgDI.vBCRr.t9lueyfXxP1eEKLaRmf1PAfmb4GiWG0zU5lu", "$2a$10$sOonsPAgDI.vBCRr.t9lueyfXxP1eEKLaRmf1PAfmb4GiWG0zU5lu", "ADMIN");
-			userRepo.save(user);
-			userRepo.save(user2);
+			User user = new User("user", "user", "user@user.com",
+					"$2a$10$T.fEvFa9UpgdacosOAUvaubtI/hPcGlEV2kMzAJTSLa70Zg72GHhK",
+					"$2a$10$T.fEvFa9UpgdacosOAUvaubtI/hPcGlEV2kMzAJTSLa70Zg72GHhK", "USER");
+			User user2 = new User("admin", "admin", "admin@admin.com",
+					"$2a$10$sOonsPAgDI.vBCRr.t9lueyfXxP1eEKLaRmf1PAfmb4GiWG0zU5lu",
+					"$2a$10$sOonsPAgDI.vBCRr.t9lueyfXxP1eEKLaRmf1PAfmb4GiWG0zU5lu", "ADMIN");
+			if (userRepo.findByEmail(user.getEmail()) == null) {
+				userRepo.save(user);
+			}
+			if (userRepo.findByEmail(user2.getEmail()) == null) {
+				userRepo.save(user2);
+			}
 		};
 	};
 }

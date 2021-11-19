@@ -23,7 +23,7 @@ public class User {
 
 	@Email(message = "Invalid email!")
 	@NotEmpty(message = "Email cannot be empty!")
-	@Column(name = "email", nullable = false)
+	@Column(name = "email", nullable = false, unique = true)
 	private String email;
 
 	@NotEmpty(message = "First name cannot be empty!")

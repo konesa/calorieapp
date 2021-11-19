@@ -6,8 +6,9 @@
 <title>Register to calories counter</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
-<body>
+<body class="margins">
 	<h1>Registration</h1>
 	<div class="form-group">
 		<form action="#" th:action="@{/register}" th:object="${user}"
@@ -29,7 +30,7 @@
 			<div class="form-group">
 				<label for="email">Email: </label> <input class="form-control"
 					type="text" th:field="*{email}" id="email"
-					placeholder="name@email.com">
+					placeholder="example@mail.com">
 				<div class="alert alert-warning"
 					th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
 			</div>
@@ -51,8 +52,7 @@
 			<button type="submit" class="btn btn-success">Register</button>
 		</form>
 		<form action="#" th:action="@{/login}" method="get" class="form">
-			<input type="submit" class="btn btn-warning"
-				value="Go back to login">
+			<input type="submit" class="btn btn-warning" value="Go back to login">
 		</form>
 	</div>
 </body>

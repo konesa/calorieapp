@@ -1,5 +1,6 @@
 package com.calorieApp.web;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class IndexController {
 	@GetMapping(value = "/index")
 	public String indexController(Model model) {
 		List<Meal> meals = userFuncs.getMeals();
+		Collections.reverse(meals);
 		model.addAttribute("meals", meals);
 		return "index";
 	}

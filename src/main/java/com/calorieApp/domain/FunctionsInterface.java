@@ -12,12 +12,14 @@ public interface FunctionsInterface {
 	boolean deleteUser(long id);
 
 	boolean addMeal(Meal meal);
-	
+
 	long getUserId();
-	
+
 	List<Meal> getMeals();
 
-	Object getUser();
+	Object getMeal(long id);
 
-	void updateUser(User user);
+	boolean deleteMeal(long id);
+
+	void deleteAllMeals(long userId);
 }

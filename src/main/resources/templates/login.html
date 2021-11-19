@@ -6,26 +6,35 @@
 <title>Login to calories counter</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-	<div th:if="${param.error}" class="error">Invalid email and
-		password.</div>
-	<div class="form-group">
-		<form th:action="@{/login}" method="post" class="form">
-			<div>
-				<label> Email: <input type="text" name="username" />
-				</label>
-			</div>
-			<div>
-				<label> Password: <input type="password" name="password" />
-				</label>
-			</div>
-			<div>
-				<button type="submit">Sign in</button>
-			</div>
-		</form>
-		<a href="/register">
-			<button>Sign up</button>
-		</a>
+	<div class="center">
+		<h1>Welcome to the Food diary!</h1>
+		<br>
+		<div th:if="${param.error}" class="error" style="color: red">
+			<h3>Invalid email and password.</h3>
+		</div>
+		<div>
+			<br>
+			<form th:action="@{/login}" method="post" class="form">
+				<div class="form-group">
+					<label for="username">Email: </label> <input
+						class="form-control" type="text" name="username" id="username"
+						placeholder="example@mail.com">
+				</div>
+				<div class="form-group">
+					<label for="username">Password: </label> <input
+						class="form-control" type="password" name="password" id="password"
+						placeholder="Username">
+				</div>
+				<div>
+					<input type="submit" class="btn btn-success" value="Login">
+				</div>
+			</form>
+			<form th:action="@{/register}" method="get" class="form">
+				<input type="submit" class="btn btn-warning" value="Register">
+			</form>
+		</div>
 	</div>
 </body>

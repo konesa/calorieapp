@@ -1,0 +1,26 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="utf-8">
+<title>Are you certain?</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	<div class="center">
+		<p>We are sad to see you go! Are you sure you want to remove your
+			account?
+		<p>
+			<br>
+		<div class="inline">
+			<form action="#" th:action="@{/index}" method="get" class="form">
+				<input type="submit" class="btn btn-success" value="No">
+			</form>
+			<form action="#" th:action="@{/deleteUser}" method="post" class="form">
+				<input type="submit" class="btn btn-danger" value="Yes">
+			</form>
+		</div>
+	</div>
+</body>

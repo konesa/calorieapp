@@ -1,18 +1,13 @@
-.margins {
+body {
 	margin-left: 10%;
 	margin-right: 10%;
 }
 
-.center {
+.centerLogin {
 	display: flex;
 	min-height: 100vh;
 	min-width: 100vw;
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-}
-
-.inline {
-	display: flex;
-	flex-direction: row;
 }
