@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.calorieApp.domain.Meal;
+import com.calorieApp.domain.UserDetailServiceImpl;
 import com.calorieApp.domain.UserFunctions;
 
 @Controller
@@ -16,6 +17,8 @@ public class IndexController {
 
 	@Autowired
 	UserFunctions userFuncs;
+	@Autowired
+	UserDetailServiceImpl userService;
 
 	@GetMapping(value = "/index")
 	public String indexController(Model model) {
