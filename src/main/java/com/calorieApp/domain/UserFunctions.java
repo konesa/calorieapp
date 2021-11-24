@@ -1,5 +1,6 @@
 package com.calorieApp.domain;
 
+import java.util.Collections;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -89,7 +90,9 @@ public class UserFunctions implements FunctionsInterface {
 	/* Returns all the meals belonging to a specific id */
 	public List<Meal> getMeals() {
 		long userId = getUserId();
-		return mealRepo.findByUserId(userId);
+		List<Meal> meals = mealRepo.findByUserId(userId);
+		Collections.reverse(meals);
+		return meals;
 	}
 
 	public Meal getMeal(long id) {

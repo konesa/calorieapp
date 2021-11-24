@@ -32,7 +32,6 @@ public class CreateAdminController {
 
 	@PostMapping(value = "/createAdmin")
 	public String createAdmin(@ModelAttribute @Valid User user, BindingResult result, Errors errors, Model model) {
-
 		if (userFuncs.userAuthority() == "ADMIN") {
 			if (result.hasErrors()) {
 				return "register";
