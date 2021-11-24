@@ -103,7 +103,8 @@ public class UserFunctions implements FunctionsInterface {
 			return false;
 		}
 	}
-
+	
+	//When the user deletes their account, this is run automatically and the entries will be deleted from the database
 	public void deleteAllMeals(long userID) {
 		List<Meal> meals = getMeals();
 		mealRepo.deleteAll(meals);
