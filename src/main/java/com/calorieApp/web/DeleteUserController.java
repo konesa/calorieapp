@@ -27,7 +27,7 @@ public class DeleteUserController {
 			return "login";
 		} else if (userFuncs.getMeals().size() == 0) {
 			userFuncs.deleteUser(userFuncs.getUserId());
-			return "login";
+			return "logout";
 		} else {
 			return "error";
 		}
