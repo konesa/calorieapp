@@ -1,0 +1,17 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="utf-8">
+<title>Are you certain?</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body class="center-form">
+	<h2>Thank you for your time! Remember you can register whenever
+		again!</h2>
+	<form action="#" th:action="@{/index}" method="get" class="form">
+		<input type="submit" class="btn btn-success" value="No">
+	</form>
+</body>
