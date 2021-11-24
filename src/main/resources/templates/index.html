@@ -18,6 +18,9 @@
 			method="get">
 			<input type="submit" class="btn btn-success" value="Enter a meal" />
 		</form>
+		<form sec:authorize="hasRole('ADMIN')" action="#" th:action="@{/createAdmin}" method="get" class="form">
+			<input style ="float:left" type="submit" class="btn btn-secondary" value="Create admin">
+		</form>
 		<form action="#" th:action="@{/deleteUser}" method="get" class="form">
 			<input style ="float:right" type="submit" class="btn btn-secondary" value="Delete user">
 		</form>
