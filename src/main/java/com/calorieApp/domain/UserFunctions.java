@@ -67,6 +67,7 @@ public class UserFunctions implements FunctionsInterface {
 	/* Deletes the user or returns false if the delete was unsuccessful */
 	public boolean deleteUser(long id) {
 		userRepo.deleteById(id);
+        SecurityContextHolder.clearContext();
 		if ((userRepo.findById(id).orElse(null)) == null) {
 			return true;
 		} else {
