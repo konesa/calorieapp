@@ -15,7 +15,7 @@ public interface FunctionsInterface {
 
 	long getUserId();
 
-	List<Meal> getMeals();
+	List<Meal> getMeals(long id);
 
 	Object getMeal(long id);
 

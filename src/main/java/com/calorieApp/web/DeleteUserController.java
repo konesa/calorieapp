@@ -21,11 +21,11 @@ public class DeleteUserController {
 
 	@PostMapping(value = "/deleteUser")
 	public String deleteUserConfirmed(Model model) {
-		if (userFuncs.getMeals().size() != 0) {
+		if (userFuncs.getMeals(userFuncs.getUserId()).size() != 0) {
 			userFuncs.deleteAllMeals(userFuncs.getUserId());
 			userFuncs.deleteUser(userFuncs.getUserId());
 			return "login";
-		} else if (userFuncs.getMeals().size() == 0) {
+		} else if (userFuncs.getMeals(userFuncs.getUserId()).size() == 0) {
 			userFuncs.deleteUser(userFuncs.getUserId());
 			return "login";
 		} else {

@@ -88,9 +88,8 @@ public class UserFunctions implements FunctionsInterface {
 
 	@Override
 	/* Returns all the meals belonging to a specific id */
-	public List<Meal> getMeals() {
-		long userId = getUserId();
-		List<Meal> meals = mealRepo.findByUserId(userId);
+	public List<Meal> getMeals(long id) {
+		List<Meal> meals = mealRepo.findByUserId(id);
 		Collections.reverse(meals);
 		return meals;
 	}
@@ -110,7 +109,7 @@ public class UserFunctions implements FunctionsInterface {
 	
 	//When the user deletes their account, this is run automatically and the entries will be deleted from the database
 	public void deleteAllMeals(long userID) {
-		List<Meal> meals = getMeals();
+		List<Meal> meals = getMeals(userID);
 		mealRepo.deleteAll(meals);
 	}
 }
