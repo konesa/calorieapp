@@ -17,8 +17,12 @@ public class IndexController {
 
 	@GetMapping(value = "/index")
 	public String indexController(Model model) {
-		List<Meal> meals = userFuncs.getMeals(userFuncs.getUserId());
-		model.addAttribute("meals", meals);
-		return "index";
+		if (userFuncs.userAuthority() == null) {
+			return "login";
+		} else {
+			List<Meal> meals = userFuncs.getMeals(userFuncs.getUserId());
+			model.addAttribute("meals", meals);
+			return "index";
+		}
 	}
 }
