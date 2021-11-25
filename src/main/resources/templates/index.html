@@ -3,7 +3,7 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="utf-8">
-<title>Login to calorie counter</title>
+<title>Welcome to meal diary!</title>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" th:href="@{/css/style.css}">
@@ -17,9 +17,6 @@
 		<form style="float: left; margin-left: 10%" th:action="@{/addMeal}"
 			method="get">
 			<input type="submit" class="btn btn-success" value="Enter a meal" />
-		</form>
-		<form sec:authorize="hasAuthority('ADMIN')" action="#" th:action="@{/createAdmin}" method="get" class="form">
-			<input style ="float:left; margin-left: 10%" type="submit" class="btn btn-secondary" value="Create admin">
 		</form>
 		<form action="#" th:action="@{/deleteUser}" method="get" class="form">
 			<input style ="float:right" type="submit" class="btn btn-secondary" value="Delete user">
