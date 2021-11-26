@@ -32,7 +32,7 @@ public class AddMealController {
 			return "addMeal";
 		} else {
 			if (functions.addMeal(meal)) {
-				return "redirect:/index";
+				return "redirect:/home";
 			} else {
 				return "error";
 			}

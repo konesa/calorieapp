@@ -57,7 +57,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<div th:if="${meals == null}">
+		<div th:if="${meals.size == 0}">
 			<h2>No meals to show yet, go add some!</h2>
 		</div>
 	</div>

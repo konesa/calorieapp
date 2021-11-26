@@ -21,7 +21,7 @@ class CalorieAppApplicationTests {
 	@Autowired
 	private EditMealController controller5;
 	@Autowired
-	private IndexController controller6;
+	private HomeController controller6;
 	@Autowired
 	private LoginController controller7;
 	@Autowired

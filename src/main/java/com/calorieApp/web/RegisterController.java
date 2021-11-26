@@ -25,7 +25,7 @@ public class RegisterController {
 			model.addAttribute("user", new User());
 			return "register";
 		} else {
-			return "redirect:/index";
+			return "redirect:/home";
 		}
 	}
 
@@ -37,13 +37,13 @@ public class RegisterController {
 				return "register";
 			} else {
 				if (userFuncs.registerUser(user)) {
-					return "redirect:/index";
+					return "login";
 				} else {
 					return "error";
 				}
 			}
 		} else {
-			return "redirect:/index";
+			return "redirect:/home";
 		}
 	}
 }

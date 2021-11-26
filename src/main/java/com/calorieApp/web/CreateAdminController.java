@@ -21,13 +21,12 @@ public class CreateAdminController {
 
 	@GetMapping(value = "/createAdmin")
 	public String createAdmin(Model model) {
-		System.out.println(userFuncs.userAuthority());
 		if (userFuncs.userAuthority() == "ADMIN") {
 			User user = new User();
 			model.addAttribute("user", user);
 			return "createAdmin";
 		} else {
-			return "redirect:/index";
+			return "error/403";
 		}
 	}
 
@@ -38,13 +37,13 @@ public class CreateAdminController {
 				return "register";
 			} else {
 				if (userFuncs.createAdmin(user)) {
-					return "index";
+					return "redirect:/home";
 				} else {
 					return "error";
 				}
 			}
 		} else {
-			return "index";
+			return "redirect:/home";
 		}
 	}
 }

@@ -24,10 +24,10 @@ public class DeleteUserController {
 		if (userFuncs.getMeals(userFuncs.getUserId()).size() != 0) {
 			userFuncs.deleteAllMeals(userFuncs.getUserId());
 			userFuncs.deleteUser(userFuncs.getUserId());
-			return "login";
+			return "redirect:../login";
 		} else if (userFuncs.getMeals(userFuncs.getUserId()).size() == 0) {
 			userFuncs.deleteUser(userFuncs.getUserId());
-			return "login";
+			return "redirect:/home";
 		} else {
 			return "error";
 		}

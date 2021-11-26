@@ -20,7 +20,7 @@ public class DeleteMealController {
 		if (userFuncs.getMeal(id) != null) {
 			Meal meal = userFuncs.getMeal(id);
 			if (meal.getUserId() == userFuncs.getUserId() && userFuncs.deleteMeal(id) == true) {
-				return "redirect:../index";
+				return "redirect:/";
 			} else {
 				return "error";
 			}
