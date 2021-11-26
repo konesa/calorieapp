@@ -8,12 +8,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.calorieApp.domain.Meal;
 import com.calorieApp.domain.UserFunctions;
+import com.calorieApp.domain.UserRepository;
 
 @Controller
 public class IndexController {
 
 	@Autowired
 	UserFunctions userFuncs;
+	@Autowired
+	UserRepository userRepo;
 
 	@GetMapping(value = "/index")
 	public String indexController(Model model) {

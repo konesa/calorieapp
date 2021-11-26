@@ -32,19 +32,21 @@ public class UserFunctions implements FunctionsInterface {
 		}
 	}
 
-	//Returns the role of the user as a string 
+	// Returns the role of the user as a string
 	public String userAuthority() {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		if (authentication == null || authentication instanceof AnonymousAuthenticationToken) {
 			return "null";
-		} else if (userRepo.findByEmail(authentication.getName()).getRole() == "ADMIN") {
+		}
+		if (userRepo.findByEmail(authentication.getName()).getRole().equalsIgnoreCase("admin")) {
 			return "ADMIN";
 		} else {
 			return "USER";
 		}
 	}
-	
-	//Gets the current authentication name and returns the ID of the user from the database
+
+	// Gets the current authentication name and returns the ID of the user from the
+	// database
 	public long getUserId() {
 		String username = SecurityContextHolder.getContext().getAuthentication().getName();
 		User user = userRepo.findByEmail(username);
@@ -68,7 +70,7 @@ public class UserFunctions implements FunctionsInterface {
 	// Deletes the user or returns false if the delete was unsuccessful
 	public boolean deleteUser(long id) {
 		userRepo.deleteById(id);
-        SecurityContextHolder.clearContext();
+		SecurityContextHolder.clearContext();
 		if ((userRepo.findById(id).orElse(null)) == null) {
 			return true;
 		} else {
@@ -76,7 +78,8 @@ public class UserFunctions implements FunctionsInterface {
 		}
 	}
 
-	// Gets the meal object from the controller and saves it. If unsuccessful, false is returned.
+	// Gets the meal object from the controller and saves it. If unsuccessful, false
+	// is returned.
 	public boolean addMeal(Meal meal) {
 		if (mealRepo.save(meal) != null) {
 			return true;
@@ -86,19 +89,21 @@ public class UserFunctions implements FunctionsInterface {
 	}
 
 	@Override
-	//Returns all the meals belonging to a specific user id.
+	// Returns all the meals belonging to a specific user id.
 	public List<Meal> getMeals(long id) {
 		List<Meal> meals = mealRepo.findByUserId(id);
 		Collections.reverse(meals);
 		return meals;
 	}
 
-	//An ID for a meal is passed as an argument, if the meal with that id is not found then null is returned.
+	// An ID for a meal is passed as an argument, if the meal with that id is not
+	// found then null is returned.
 	public Meal getMeal(long id) {
 		return mealRepo.findById(id).orElse(null);
 	}
 
-	//Takes the meal id as an input and removes is from the database. If the removal is unsuccessful, false is returned.
+	// Takes the meal id as an input and removes is from the database. If the
+	// removal is unsuccessful, false is returned.
 	public boolean deleteMeal(long id) {
 		mealRepo.deleteById(id);
 		if (mealRepo.findById(id).orElse(null) == null) {
@@ -107,8 +112,9 @@ public class UserFunctions implements FunctionsInterface {
 			return false;
 		}
 	}
-	
-	//When the user deletes their account, this is run automatically and the entries belonging to the user will be deleted from the database.
+
+	// When the user deletes their account, this is run automatically and the
+	// entries belonging to the user will be deleted from the database.
 	public void deleteAllMeals(long userID) {
 		List<Meal> meals = getMeals(userID);
 		mealRepo.deleteAll(meals);

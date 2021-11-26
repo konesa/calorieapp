@@ -18,7 +18,7 @@
 			method="get">
 			<input type="submit" class="btn btn-success" value="Enter a meal" />
 		</form>
-		<form sec:authorize="hasAuthority('ADMIN')" style="float: left; margin-left: 10%"
+		<form sec:authorize='hasAuthority("ADMIN")' style="float: left; margin-left: 10%"
 			th:action="@{/createAdmin}" method="get">
 			<input type="submit" class="btn btn-warning" value="Create admin" />
 		</form>
@@ -57,7 +57,7 @@
 				</tr>
 			</tbody>
 		</table>
-		<div th:if="${meals.size() == 0}">
+		<div th:if="${meals == null}">
 			<h2>No meals to show yet, go add some!</h2>
 		</div>
 	</div>
