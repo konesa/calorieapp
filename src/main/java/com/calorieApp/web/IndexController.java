@@ -18,7 +18,7 @@ public class IndexController {
 	@Autowired
 	UserRepository userRepo;
 
-	@GetMapping(value = "/index")
+	@GetMapping(value = "/")
 	public String indexController(Model model) {
 		if (userFuncs.userAuthority() == null) {
 			return "login";
