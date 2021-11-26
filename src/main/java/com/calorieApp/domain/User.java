@@ -13,7 +13,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "USERTABLE", uniqueConstraints={@UniqueConstraint(columnNames={"email"})})
+@Table(name = "USERTABLE", uniqueConstraints = { @UniqueConstraint(columnNames = { "email" }) })
 @PasswordMatcher
 public class User {
 	@Id
@@ -48,8 +48,7 @@ public class User {
 	public User() {
 	}
 
-	public User(String firstName, String lastName, String email, String password, String password2,
-			String role) {
+	public User(String firstName, String lastName, String email, String password, String password2, String role) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;

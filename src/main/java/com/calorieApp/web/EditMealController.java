@@ -42,7 +42,7 @@ public class EditMealController {
 			return "editMeal";
 		} else {
 			if (userFuncs.addMeal(meal)) {
-				return "redirect:/home";
+				return "redirect:/";
 			} else {
 				return "error";
 			}

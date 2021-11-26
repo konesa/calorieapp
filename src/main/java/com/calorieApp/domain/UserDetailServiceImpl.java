@@ -13,10 +13,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
 	private final UserRepository repository;
-	
+
 	@Bean
 	PasswordEncoder encoder() {
-	    return new BCryptPasswordEncoder();
+		return new BCryptPasswordEncoder();
 	}
 
 	@Autowired

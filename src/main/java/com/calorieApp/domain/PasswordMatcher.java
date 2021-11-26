@@ -8,7 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 import javax.validation.Constraint;
 import javax.validation.Payload;
 
-@Target({ElementType.TYPE})
+@Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = PasswordMatcherValidator.class)
 @Documented

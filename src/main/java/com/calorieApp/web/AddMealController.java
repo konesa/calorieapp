@@ -21,8 +21,8 @@ public class AddMealController {
 
 	@GetMapping(value = "/addMeal")
 	public String newMeal(Model model, Meal meal) {
-			model.addAttribute(meal);
-			return "addMeal";
+		model.addAttribute(meal);
+		return "addMeal";
 	}
 
 	@PostMapping(value = "/addMeal")
@@ -32,7 +32,7 @@ public class AddMealController {
 			return "addMeal";
 		} else {
 			if (functions.addMeal(meal)) {
-				return "redirect:/home";
+				return "redirect:/";
 			} else {
 				return "error";
 			}

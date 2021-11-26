@@ -37,13 +37,13 @@ public class CreateAdminController {
 				return "register";
 			} else {
 				if (userFuncs.createAdmin(user)) {
-					return "redirect:/home";
+					return "redirect:/";
 				} else {
 					return "error";
 				}
 			}
 		} else {
-			return "redirect:/home";
+			return "redirect:/";
 		}
 	}
 }

@@ -42,7 +42,6 @@ public class Meal {
 
 	public Meal() {
 	}
-	
 
 	public Meal(long id, String date, long userId, @NotEmpty(message = "Meal name cannot be empty!") String mealname,
 			int calories, int carbs, int sugar, int protein) {
@@ -56,7 +55,6 @@ public class Meal {
 		this.sugar = sugar;
 		this.protein = protein;
 	}
-
 
 	public Meal(long userId, String mealname, int calories, int carbs, int sugar, int protein) {
 		this.userId = userId;
@@ -118,27 +116,23 @@ public class Meal {
 	public void setUserId(long userId) {
 		this.userId = userId;
 	}
-	
 
 	public long getId() {
 		return id;
 	}
 
-
 	public void setId(long id) {
 		this.id = id;
 	}
 
-
 	public void setDate(String date) {
 		this.date = date;
 	}
-
 
 	@Override
 	public String toString() {
 		return "Meal [id=" + id + ", date=" + date + ", userId=" + userId + ", mealname=" + mealname + ", calories="
 				+ calories + ", carbs=" + carbs + ", sugar=" + sugar + ", protein=" + protein + "]";
 	}
-	
+
 }
