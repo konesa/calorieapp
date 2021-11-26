@@ -27,6 +27,7 @@ public class AddMealController {
 
 	@PostMapping(value = "/addMeal")
 	public String addMeal(@ModelAttribute @Valid Meal meal, BindingResult result, Errors errors, Model model) {
+		meal.setUserId(functions.getUserId());
 		if (result.hasErrors()) {
 			return "addMeal";
 		} else {
