@@ -20,7 +20,7 @@
 		</form>
 		<form sec:authorize="hasAuthority('ADMIN')" style="float: left; margin-left: 10%"
 			th:action="@{/createAdmin}" method="get">
-			<input type="submit" class="btn btn-success" value="Create admin" />
+			<input type="submit" class="btn btn-warning" value="Create admin" />
 		</form>
 
 		<form action="#" th:action="@{/deleteUser}" method="get" class="form">

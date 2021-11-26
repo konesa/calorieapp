@@ -25,8 +25,4 @@ public class IndexController {
 			return "index";
 		}
 	}
-	@GetMapping(value = "/")
-	public String indexCont2() {
-		return "index";
-	}
 }
