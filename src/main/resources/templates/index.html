@@ -9,7 +9,7 @@
 <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body class="margins">
-	<h1 th:inline="text" style="text-align:center">Welcome!</h1>
+	<h1 th:inline="text" style="text-align: center">Welcome!</h1>
 	<div>
 		<form style="float: left" th:action="@{/logout}" method="post">
 			<input type="submit" class="btn btn-danger" value="Logout" />
@@ -18,8 +18,14 @@
 			method="get">
 			<input type="submit" class="btn btn-success" value="Enter a meal" />
 		</form>
+		<form sec:authorize="hasAuthority('ADMIN')" style="float: left; margin-left: 10%"
+			th:action="@{/createAdmin}" method="get">
+			<input type="submit" class="btn btn-success" value="Create admin" />
+		</form>
+
 		<form action="#" th:action="@{/deleteUser}" method="get" class="form">
-			<input style ="float:right" type="submit" class="btn btn-secondary" value="Delete user">
+			<input style="float: right" type="submit" class="btn btn-secondary"
+				value="Delete user">
 		</form>
 	</div>
 	<div>
@@ -44,8 +50,10 @@
 					<td th:text="${meal.carbs}"></td>
 					<td th:text="${meal.protein}"></td>
 					<td th:text="${meal.sugar}"></td>
-					<td><a class="btn btn-warning" th:href="@{/editMeal/{id}(id=${meal.id})}">Edit</a></td>
-					<td><a class="btn btn-danger" th:href="@{/deleteMeal/{id}(id=${meal.id})}">Delete</a></td>
+					<td><a class="btn btn-warning"
+						th:href="@{/editMeal/{id}(id=${meal.id})}">Edit</a></td>
+					<td><a class="btn btn-danger"
+						th:href="@{/deleteMeal/{id}(id=${meal.id})}">Delete</a></td>
 				</tr>
 			</tbody>
 		</table>

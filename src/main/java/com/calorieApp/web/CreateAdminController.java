@@ -3,6 +3,7 @@ package com.calorieApp.web;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,19 +16,17 @@ import com.calorieApp.domain.User;
 import com.calorieApp.domain.UserFunctions;
 
 @Controller
+@PreAuthorize("hasRole('ADMIN')")
+
 public class CreateAdminController {
 	@Autowired
 	UserFunctions userFuncs;
 
 	@GetMapping(value = "/createAdmin")
 	public String createAdmin(Model model) {
-		if (userFuncs.userAuthority() == "ADMIN") {
 			User user = new User();
 			model.addAttribute("user", user);
 			return "createAdmin";
-		} else {
-			return "403";
-		}
 	}
 
 	@PostMapping(value = "/createAdmin")
