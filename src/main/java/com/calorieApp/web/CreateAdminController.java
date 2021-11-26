@@ -16,8 +16,7 @@ import com.calorieApp.domain.User;
 import com.calorieApp.domain.UserFunctions;
 
 @Controller
-public class CreateAdminController {
-	
+public class CreateAdminController {	
 	@Autowired
 	UserFunctions userFuncs;
 
@@ -25,7 +24,6 @@ public class CreateAdminController {
 	@PreAuthorize("hasRole('ADMIN')")
 
 	public String createAdmin(Model model) {
-		System.out.println(userFuncs.userAuthority());
 		if (userFuncs.userAuthority() == "ADMIN") {
 			User user = new User();
 			model.addAttribute("user", user);
