@@ -14,7 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-	
+
 	@Autowired
 	private UserDetailServiceImpl userDetailsService;
 
@@ -25,19 +25,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-		.antMatchers("/register", "/css/**")
-		.permitAll()
-		.anyRequest()
-		.authenticated()
-		.and()
-		.formLogin()
-		.loginPage("/login")
-		.defaultSuccessUrl("/index", true)
-		.permitAll()
-		.and()
-		.logout()
-		.logoutSuccessUrl("/login")
-		.permitAll();
+		http.authorizeRequests().antMatchers("/register", "/css/**").permitAll().anyRequest().authenticated().and()
+				.formLogin().loginPage("/login").defaultSuccessUrl("/index", true).permitAll().and().logout()
+				.logoutSuccessUrl("/login").permitAll();
 	}
 }

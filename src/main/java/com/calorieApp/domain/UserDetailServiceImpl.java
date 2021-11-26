@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
-	private final UserRepository userRepo;
+	private final UserRepository repository;
 	
 	@Bean
 	PasswordEncoder getPasswordEncoder() {
@@ -21,14 +21,15 @@ public class UserDetailServiceImpl implements UserDetailsService {
 
 	@Autowired
 	public UserDetailServiceImpl(UserRepository userRepository) {
-		this.userRepo = userRepository;
+		this.repository = userRepository;
 	}
 
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-		User curruser = userRepo.findByEmail(email);
+		User curruser = repository.findByEmail(email);
 		UserDetails user = new org.springframework.security.core.userdetails.User(email, curruser.getPassword(),
 				AuthorityUtils.createAuthorityList(curruser.getRole()));
 		return user;
 	}
+
 }
