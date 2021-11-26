@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.calorieApp.domain.Meal;
 import com.calorieApp.domain.UserFunctions;
@@ -24,5 +25,9 @@ public class IndexController {
 			model.addAttribute("meals", meals);
 			return "index";
 		}
+	}
+	@RequestMapping(value = "/")
+	public String indexCont2() {
+		return "index";
 	}
 }
